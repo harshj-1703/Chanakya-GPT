@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chankya Neeti GPT</title>
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+<body>
+    <div id="loader"></div>
+    <h1>Chankya Neeti GPT</h1>
+    <form action="/" method="get" id="form1">
+        <label for="">Enter Description :</label>
+        <textarea name="description" required rows="3" oninput="limitTextarea(this)" maxlength="250"></textarea>
+        <input type="submit" value="Give Motivation">
+    </form>
+    {% if output_des is defined %}
+    <form action="" id="form1">
+        <p>{{ output_des }}</p>
+        <p>Chapter No. {{ chapter }} , 
+        Slok No. {{ slok }}</p>
+    </form>
+    {% endif %}
+<div class="developer">Developed By</div>
+<div class="name">Harsh Jolapara💻</div>
+</body>
+<script>
+function limitTextarea(textarea) {
+    const MAX_WORDS = 250;
+    const words = textarea.value.trim().split(/\s+/).length;
+    if (words > MAX_WORDS) {
+        const truncatedText = textarea.value.trim().split(/\s+/).slice(0, MAX_WORDS).join(" ");
+        textarea.value = truncatedText;
+    }
+}
+// Display the loader when the form is submitted
+document.querySelector('form').addEventListener('submit', function() {
+    document.getElementById('loader').style.display = 'block';
+});
+
+// Hide the loader after the page is loaded
+window.onload = function() {
+    document.getElementById('loader').style.display = 'none';
+}
+</script>
+
+</html>
